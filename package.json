@@ -1,0 +1,14 @@
+{
+  "name": "refactorjs",
+  "version": "1.0.0",
+  "description": "Writing allong with reading Refactoring Js",
+  "main": "main.js",
+  "repository": "https://github.com/SiggiSch/refactorjswritealong",
+  "author": "siggi",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node main.js",
+    "startch6": "node ch6/code.js"
+  }
+}
