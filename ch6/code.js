@@ -20,6 +20,11 @@ var labelProbabilities = [];
 var chordCountsInLabels = {};
 var probabilityOfChordsInLabels = {};
 
+const easy = 'easy';
+const medium = 'medium';
+const hard = 'hard';
+
+
 function train(chords, label) {
   songs.push([label, chords]);
   labels.push(label);
@@ -72,15 +77,15 @@ function setProbabilityOfChordsInLabels() {
   });
 }
 
-train(imagine, 'easy');
-train(somewhereOverTheRainbow, 'easy');
-train(tooManyCooks, 'easy');
-train(iWillFollowYouIntoTheDark, 'medium');
-train(babyOneMoreTime, 'medium');
-train(creep, 'medium');
-train(paperBag, 'hard');
-train(toxic, 'hard');
-train(bulletproof, 'hard');
+train(imagine, easy);
+train(somewhereOverTheRainbow, easy);
+train(tooManyCooks, easy);
+train(iWillFollowYouIntoTheDark, medium);
+train(babyOneMoreTime, medium);
+train(creep, medium);
+train(paperBag, hard);
+train(toxic, hard);
+train(bulletproof, hard);
 
 setLabelProbabilities();
 setChordCountsInLabels();
@@ -90,12 +95,13 @@ function classify(chords) {
   console.log(labelProbabilities);
   var classified = {};
   Object.keys(labelProbabilities).forEach(function (difficulty) {
-    var first = labelProbabilities[difficulty] + 1.01;
+    const smothing = 1.01;
+    var first = labelProbabilities[difficulty] + smothing;
     chords.forEach(function (chord) {
       var probabilityOfChordInLabel =
         probabilityOfChordsInLabels[difficulty][chord];
       if (probabilityOfChordInLabel) {
-        first = first * (probabilityOfChordInLabel + 1.01);
+        first = first * (probabilityOfChordInLabel + smothing);
       }
     });
     classified[difficulty] = first;
