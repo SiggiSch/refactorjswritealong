@@ -1,6 +1,6 @@
 function filename() {
   const err = new Error().stack;
-  return /\/(\w+\.js)\:/.exec(err)[1];
+  return /\/(\w+\.js):/.exec(err)[1];
 }
 console.log(`Welcome to ${filename()}`);
 

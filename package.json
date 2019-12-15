@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "start": "node main.js",
-    "startch6": "node ch6/code.js"
+    "startch6": "node ch6/nb.js"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.7.0",
