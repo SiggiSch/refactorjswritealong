@@ -1,3 +1,9 @@
+function filename() {
+  const err = new Error().stack;
+  return /\/(\w+\.js)\:/.exec(err)[1];
+}
+console.log(`Welcome to ${filename()}`);
+
 
 // songs
 const imagine = ['c', 'cmaj7', 'f', 'am', 'dm', 'g', 'e7'];
@@ -28,11 +34,11 @@ const hard = 'hard';
 function train(chords, label) {
   songs.push([label, chords]);
   labels.push(label);
-  for (var i = 0; i < chords.length; i++) {
-    if (!allChords.includes(chords[i])) {
-      allChords.push(chords[i]);
+  chords.forEach((chord) => {
+    if (!allChords.includes(chord)) {
+      allChords.push(chord);
     }
-  }
+  });
   if (Object.keys(labelCounts).includes(label)) {
     labelCounts[label] = labelCounts[label] + 1;
   } else {
