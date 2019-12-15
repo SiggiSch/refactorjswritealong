@@ -10,5 +10,10 @@
   "scripts": {
     "start": "node main.js",
     "startch6": "node ch6/code.js"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.7.0",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0"
   }
 }
