@@ -1,8 +1,12 @@
-function filename() {
-  const err = new Error().stack;
-  return /\/(\w+\.js):/.exec(err)[1];
+export function filename() {
+  return /(\w+\.ts)/.exec(__filename)[0];
 }
-console.log(`Welcome to ${filename()}`);
+
+export function welcomeMessage() {
+  return `Welcome to ${filename()}`;
+}
+
+console.log(welcomeMessage());
 
 // songs
 const imagine = ["c", "cmaj7", "f", "am", "dm", "g", "e7"];
@@ -26,6 +30,7 @@ const paperBag = [
   "f7",
   "b"
 ];
+
 const toxic = [
   "cm",
   "eb",
@@ -43,7 +48,7 @@ const bulletproof = ["d#m", "g#", "b", "f#", "g#m", "c#"];
 var songs = [];
 var allChords = new Set();
 var labelCounts = new Map();
-var labelProbabilities = new Map();
+export var labelProbabilities = new Map();
 var chordCountsInLabels = new Map();
 var probabilityOfChordsInLabels = new Map();
 
@@ -107,8 +112,7 @@ setLabelProbabilities();
 setChordCountsInLabels();
 setProbabilityOfChordsInLabels();
 
-function classify(chords) {
-  console.log(labelProbabilities);
+export function classify(chords) {
   var classified = new Map();
   labelProbabilities.forEach(function(_probabilities, difficulty) {
     const smothing = 1.01;
@@ -123,8 +127,6 @@ function classify(chords) {
     });
     classified.set(difficulty, first);
   });
-  console.log(classified);
-}
 
-classify(["d", "g", "e", "dm"]);
-classify(["f#m7", "a", "dadd9", "dmaj7", "bm", "bm7", "d", "f#m"]);
+  return classified;
+}
