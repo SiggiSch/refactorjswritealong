@@ -31,6 +31,8 @@ describe("the file", () => {
   });
 
   it("label propabilities", () => {
-    console.log(labelProbabilities);
+    expect(labelProbabilities.get("easy")).toEqual(0.3333333333333333);
+    expect(labelProbabilities.get("medium")).toEqual(0.3333333333333333);
+    expect(labelProbabilities.get("hard")).toEqual(0.3333333333333333);
   });
 });
