@@ -1,6 +1,8 @@
-import { classify, welcomeMessage, labelProbabilities } from "./nb";
+import { classify, welcomeMessage, labelProbabilities, trainAll } from "./nb";
 
 describe("the file", () => {
+  trainAll();
+
   it("classifies", () => {
     const classified = classify([
       "f#m7",
